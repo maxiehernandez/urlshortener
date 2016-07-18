@@ -13,6 +13,13 @@
 
   <% Url.all.each do |a| %>
   <p>
-  <a href="http://localhost:3000/url/show/<%=a.id%>">http:localhost:3000/url/show/<%=a.id%></a>
+    <% if Rails.env.production?%>
+    <a href="https://pacific-waters-33415.herokuapp.com/url/show<%=a.id%>">https://pacific-waters-33415.herokuapp.com/url/show<%=a.id%></a>
   </p>
+
+    <%else %>
+    <p>
+      <a href="http://localhost:3000/url/show/<%=a.id%>">http:localhost:3000/url/show/<%=a.id%></a>
+      <% end%>
+    </p>
   <% end %>
