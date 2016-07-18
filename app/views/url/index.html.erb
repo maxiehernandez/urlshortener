@@ -1,0 +1,18 @@
+<h1> URL Shortener </h1>
+
+<%= form_for @url, url: url_create_path do |f|%>
+  <p>
+    <%= f.label :Url, "User URL:" %>
+    <%= f.text_field :url %>
+  </p>
+  <p>
+      <%= f.submit %>
+    </p>
+
+  <% end %>
+
+  <% Url.all.each do |a| %>
+  <p>
+  <a href="http://localhost:3000/url/show/<%=a.id%>">http:localhost:3000/url/show/<%=a.id%></a>
+  </p>
+  <% end %>
