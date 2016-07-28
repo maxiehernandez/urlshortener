@@ -1,38 +1,26 @@
 class UrlController < ApplicationController
 
   def index
+    @urls = Url.all
     @url = Url.new
   end
 
   def create
     @url = Url.new(url_params)
 
-
     # create random string
-    @url.code = Url.ran_string
+    @url.ran_string
     # some random string... make sure user sees this in my view
-
 
     @url.save
     redirect_to root_path
   end
 
   def show
-    @shorturl = Url.find(params[:id])
-    redirect_to @shorturl.url
+    @url = Url.find(params[:id])
+    redirect_to @url.url
   end
 
-  def code
-    if @shorturl = Url.find_by_code(params[:code])
-      redirect_to @shorturl.url
-    else
-      @url = Url.new
-      @url.url = "http://#{params[:code]}"
-      @url.code = Url.ran_string
-      @url.save
-      redirect_to root_path
-    end
-  end
 
 
   private

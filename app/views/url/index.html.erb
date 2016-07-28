@@ -11,6 +11,13 @@
 
   <% end %>
 
-  <% Url.all.each do |a| %>
-    <p>The code for <%= a.url %> is <a href=<%= a.url %>><%= a.code%></a></p>
+  <% @urls.each do |a| %>
+    <p>
+      The URL path for <%= a.url %> is
+      <%= link_to(url_path(a), a.url)%>
+    </p>
+    <p>
+      The code for <%= a.url %> is
+      <%= link_to(a.ran_string, a.url)%>
+    </p>
   <% end %>
